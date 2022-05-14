@@ -123,9 +123,60 @@ public class Graph {
 	}
 	
 	public void breadthFirstSearch(int start, int end) {
-		var successMessage = "Success: ";
-		var shortestLength = "The length of the shortest path to the found node: ";
-		var numberOfNodes = "The total number of nodes examined during the search: ";
+		var toVisit = new Stack<Integer>();
+		var visited = new LinkedList<Integer>();
+		int counterOfTotalNodes = 0;
+		boolean success = false;
+		
+		toVisit.push(start);
+		int visitingFromStack, visitingFromChildren;
+		
+		while (!toVisit.isEmpty() && success == false) {
+			visitingFromStack = toVisit.pop();
+			
+			if (visited.contains(visitingFromStack)) {
+				continue;
+			}
+			visited.add(visitingFromStack);
+			counterOfTotalNodes++;
+			if (visitingFromStack == end) {
+				success = true;
+				break;
+			}
+			
+			var descendents = this.storage.get(visitingFromStack);
+			if (descendents != null) {
+				for (GraphEdge w : descendents) {
+					visitingFromChildren = w.getConnectedTo();
+					visited.add(visitingFromChildren);
+					counterOfTotalNodes++;
+					
+					if (visitingFromChildren == end) {
+						success = true;
+						break;
+					}
+					
+					var childDescendents = this.storage.get(visitingFromChildren);
+					for (GraphEdge y : childDescendents) {
+						toVisit.push(y.getConnectedTo());
+						counterOfTotalNodes++;
+					}
+				}
+			}			
+		}
+		
+		var shortestLength = "The length of the shortest path to the found node: " + visited.size();
+		var path = "Path: " + visited.toString();
+		var numberOfNodes = "The total number of nodes examined during the search: " + counterOfTotalNodes;
+		
+		System.out.println(numberOfNodes);
+		if (success) {
+			System.out.println(shortestLength);
+			System.out.println(path);
+		}
+		else {
+			System.out.println("Node not found or not linked");
+		}
 	}
 	
 	public void depthFirstSearch(int start, int end) {
