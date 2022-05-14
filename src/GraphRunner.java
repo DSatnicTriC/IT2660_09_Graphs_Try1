@@ -24,21 +24,21 @@ public class GraphRunner {
 	}
 
 	private static void loadGraph() {
-		int graphSize = 5;
-		int minValue = 1;
-		int maxValue = 100001;
-		int minWeight = 1;
+		int numberOfEdges = 2;
+		int maxValue = 100000;
 		int maxWeight = 50;
 		int first, second, weight;
+		boolean bidirectional;
 
 		Random rand = new Random();
 
-		for (int i = 0; i < graphSize; i++) {
+		for (int i = 0; i < numberOfEdges; i++) {
 			try {
-				first = rand.nextInt(minValue, maxValue);
-				second = rand.nextInt(minValue, maxValue);
-				weight = rand.nextInt(minWeight, maxWeight);
-				graph.addEdge(first, second, weight, false);
+				first = rand.nextInt(maxValue) + 1;
+				second = rand.nextInt(maxValue) + 1;
+				weight = rand.nextInt(maxWeight) + 1;
+				bidirectional = rand.nextInt(2) == 0 ? false : true;
+				graph.addEdge(first, second, weight, bidirectional);
 			} catch (Exception e) {
 				// try again
 				i--;
