@@ -92,7 +92,7 @@ public class GraphRunner {
 
 	private static void displayBasicGraphInfo() {
 		System.out.println("Vertices: " + graph.getNumberOfVertices());
-		System.out.println("Y edges: " + +graph.getNumberOfVertices());
+		System.out.println("Y edges: " + +graph.getNumberOfEdges());
 	}
 
 	private static void displayFullGraph() {
