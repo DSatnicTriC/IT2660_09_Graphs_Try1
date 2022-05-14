@@ -29,9 +29,9 @@ public class GraphRunner {
 //		} catch (Exception e) {
 //			// TODO: handle exception
 //		}
-		int numberOfEdges = 4;
+		int numberOfEdges = 10;
 		int increaseStorageCounter = numberOfEdges * 2;
-		int maxValue = 5;
+		int maxValue = 10;
 		int maxWeight = 10;		
 		int first, second, weight, graphSize,
 		randomToConnectIndex1, randomToConnectIndex2,

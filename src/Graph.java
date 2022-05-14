@@ -148,6 +148,7 @@ public class Graph {
 			if (descendents != null) {
 				int childCounter = 0;
 				for (GraphEdge w : descendents) {
+					childCounter++;
 					visitingFromChildren = w.getConnectedTo();
 					
 					counterOfTotalNodes++;
@@ -162,7 +163,7 @@ public class Graph {
 						break;
 					}
 					
-					if (childCounter == 0) {
+					if (childCounter == 1) {
 						var childDescendents = this.storage.get(visitingFromChildren);
 						for (GraphEdge y : childDescendents) {
 							counterOfTotalNodes++;
@@ -226,6 +227,10 @@ public class Graph {
 			if (descendents != null) {
 				for (GraphEdge w : descendents) {
 					visitingFromChildren = w.getConnectedTo();
+					if (visited.contains(visitingFromChildren)) {
+						continue;
+					}
+					
 					visited.add(visitingFromChildren);
 					counterOfTotalNodes++;
 					
