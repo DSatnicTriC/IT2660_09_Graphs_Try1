@@ -143,7 +143,7 @@ public class Graph {
 			}
 			visited.add(visitingFromStack);
 			if (visitingFromStack == end) {
-				continue;
+				break;
 			}
 			
 			var descendents = this.storage.get(visitingFromStack);
@@ -152,12 +152,13 @@ public class Graph {
 					visitingFromChildren = w.getConnectedTo();
 					visited.add(visitingFromChildren);
 					
+					if (visitingFromChildren == end) {
+						break;
+					}
+					
 					var childDescendents = this.storage.get(visitingFromChildren);
 					for (GraphEdge y : childDescendents) {
 						toVisit.push(y.getConnectedTo());
-					}
-					if (visitingFromChildren == end) {
-						break;
 					}
 				}
 			}			
