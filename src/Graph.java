@@ -150,11 +150,27 @@ public class Graph {
 				for (GraphEdge w : descendents) {
 					visitingFromChildren = w.getConnectedTo();
 					
+					counterOfTotalNodes++;
+					if (visited.contains(visitingFromChildren)) {
+						continue;
+					}
+					
+					visited.add(visitingFromChildren);							
+					
+					if (visitingFromChildren == end) {
+						success = true;
+						break;
+					}
+					
 					if (childCounter == 0) {
 						var childDescendents = this.storage.get(visitingFromChildren);
 						for (GraphEdge y : childDescendents) {
-							visited.add(y.getConnectedTo());
 							counterOfTotalNodes++;
+							if (visited.contains(y.getConnectedTo())) {
+								continue;
+							}
+							
+							visited.add(y.getConnectedTo());							
 							
 							if (y.getConnectedTo() == end) {
 								success = true;
