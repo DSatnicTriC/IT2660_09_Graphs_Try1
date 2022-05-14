@@ -52,7 +52,6 @@ public class GraphRunner {
 			randomToConnectIndex1 = rand.nextInt(graphSize) + 1;
 			randomToConnectIndex2 = rand.nextInt(graphSize) + 1;
 			weight = rand.nextInt(maxWeight) + 1;
-			bidirectional = rand.nextInt(2) == 0 ? false : true;
 			int counter = 1;
 			for (Map.Entry<Integer, List<GraphEdge>> w : storage.entrySet()) {
 				if (counter == randomToConnectIndex1) {
