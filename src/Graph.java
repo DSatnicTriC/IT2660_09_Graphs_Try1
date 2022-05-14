@@ -8,7 +8,10 @@ public class Graph {
 	}
 
 	// keeping bidirectional weights the same
-	public void addEdge(int first, int second, int weight, boolean bidirectional) {
+	public void addEdge(int first, int second, int weight, boolean bidirectional) throws Exception {
+		if (first == second) {
+			throw new Exception("no duplicates");
+		}
 
 		if (!this.storage.containsKey(first))
 			addVertex(first);

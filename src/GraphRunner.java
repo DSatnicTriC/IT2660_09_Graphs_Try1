@@ -1,17 +1,18 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class GraphRunner {
-	
+
 	static Scanner input = new Scanner(System.in);
 	static Graph graph = new Graph();
-	
+
 	public static void main(String[] args) {
 		Integer menuEntry;
-		
+
 		loadGraph();
-		
+
 		System.out.println("Graph has been loaded!");
-		
+
 		System.out.println(graph.toString());
 
 //		displayMenu();
@@ -21,10 +22,28 @@ public class GraphRunner {
 
 		input.close();
 	}
-	
+
 	private static void loadGraph() {
-		graph.addEdge(1, 5, 30, false);
-		graph.addEdge(6, 4, 2, true);
+		int graphSize = 5;
+		int minValue = 1;
+		int maxValue = 100001;
+		int minWeight = 1;
+		int maxWeight = 50;
+		int first, second, weight;
+
+		Random rand = new Random();
+
+		for (int i = 0; i < graphSize; i++) {
+			try {
+				first = rand.nextInt(minValue, maxValue);
+				second = rand.nextInt(minValue, maxValue);
+				weight = rand.nextInt(minWeight, maxWeight);
+				graph.addEdge(first, second, weight, false);
+			} catch (Exception e) {
+				// try again
+				i--;
+			}
+		}
 	}
 
 	private static void displayBasicGraphInfo() {
@@ -48,10 +67,10 @@ public class GraphRunner {
 	}
 
 	private static Integer parseUserInput() {
-		
+
 		System.out.print("Please select an option: ");
 		int menuEntry = input.nextInt();
-		
+
 		if (menuEntry < 1 || menuEntry > 5) {
 			System.out.println("Invalid selection");
 			return null;
