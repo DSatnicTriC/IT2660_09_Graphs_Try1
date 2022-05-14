@@ -148,6 +148,10 @@ public class Graph {
 			if (descendents != null) {
 				int childCounter = 0;
 				for (GraphEdge w : descendents) {
+					if (success) {
+						// from inner loop below
+						break;
+					}
 					childCounter++;
 					visitingFromChildren = w.getConnectedTo();
 					
