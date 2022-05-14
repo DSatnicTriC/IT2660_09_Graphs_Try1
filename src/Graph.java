@@ -14,14 +14,16 @@ public class Graph {
 		}
 		
 		var existingConnections = this.storage.get(first);
-		for (GraphEdge w : existingConnections) {
-			if (w.getConnectedTo() == second) {
-				throw new Exception("connection already exists");
+		if (existingConnections != null) {
+			for (GraphEdge w : existingConnections) {
+				if (w.getConnectedTo() == second) {
+					throw new Exception("connection already exists");
+				}
 			}
-		}
-		
-		if (existingConnections.size() > 5) {
-			throw new Exception("no more than 5 connections");
+			
+			if (existingConnections.size() > 5) {
+				throw new Exception("no more than 5 connections");
+			}
 		}
 
 		if (!this.storage.containsKey(first))
