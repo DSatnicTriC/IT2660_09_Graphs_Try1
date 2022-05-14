@@ -145,6 +145,7 @@ public class GraphRunner {
 		int first = graph.getFirstVertex();
 		int second = graph.getSecondVertex();
 		System.out.println("Calculating Breadth-First between: " + first + " and " + second);
+		graph.breadthFirstSearch(first, second);
 	}
 	
 	private static void depthFirstSearch() {

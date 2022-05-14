@@ -123,43 +123,43 @@ public class Graph {
 	}
 	
 	public void breadthFirstSearch(int start, int end) {
-		var toVisit = new Stack<Integer>();
+		var toVisit = new LinkedList<Integer>();
 		var visited = new LinkedList<Integer>();
 		int counterOfTotalNodes = 0;
 		boolean success = false;
 		
-		toVisit.push(start);
-		int visitingFromStack, visitingFromChildren;
+		toVisit.add(start);
+		int visitingFromQueue, visitingFromChildren;
 		
 		while (!toVisit.isEmpty() && success == false) {
-			visitingFromStack = toVisit.pop();
+			visitingFromQueue = toVisit.remove();
 			
-			if (visited.contains(visitingFromStack)) {
+			if (visited.contains(visitingFromQueue)) {
 				continue;
 			}
-			visited.add(visitingFromStack);
+			visited.add(visitingFromQueue);
 			counterOfTotalNodes++;
-			if (visitingFromStack == end) {
+			if (visitingFromQueue == end) {
 				success = true;
 				break;
 			}
 			
-			var descendents = this.storage.get(visitingFromStack);
+			var descendents = this.storage.get(visitingFromQueue);
 			if (descendents != null) {
 				for (GraphEdge w : descendents) {
 					visitingFromChildren = w.getConnectedTo();
-					visited.add(visitingFromChildren);
+					toVisit.add(visitingFromChildren);
 					counterOfTotalNodes++;
-					
-					if (visitingFromChildren == end) {
-						success = true;
-						break;
-					}
-					
+										
 					var childDescendents = this.storage.get(visitingFromChildren);
 					for (GraphEdge y : childDescendents) {
-						toVisit.push(y.getConnectedTo());
+						visited.add(y.getConnectedTo());
 						counterOfTotalNodes++;
+						
+						if (y.getConnectedTo() == end) {
+							success = true;
+							break;
+						}
 					}
 				}
 			}			
