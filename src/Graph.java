@@ -138,9 +138,12 @@ public class Graph {
 		while (!toVisit.isEmpty()) {
 			visitingFromStack = toVisit.pop();
 			
+			if (visited.contains(visitingFromStack)) {
+				continue;
+			}
 			visited.add(visitingFromStack);
 			if (visitingFromStack == end) {
-				break;
+				continue;
 			}
 			
 			var descendents = this.storage.get(visitingFromStack);
@@ -148,6 +151,11 @@ public class Graph {
 				for (GraphEdge w : descendents) {
 					visitingFromChildren = w.getConnectedTo();
 					visited.add(visitingFromChildren);
+					
+					var childDescendents = this.storage.get(visitingFromChildren);
+					for (GraphEdge y : childDescendents) {
+						toVisit.push(y.getConnectedTo());
+					}
 					if (visitingFromChildren == end) {
 						break;
 					}
