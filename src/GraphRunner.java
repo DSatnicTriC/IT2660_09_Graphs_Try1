@@ -21,11 +21,11 @@ public class GraphRunner {
 		input.close();
 	}
 
-	private static void loadGraph() {
-		int numberOfEdges = 4;
+	private static void loadGraph() {		
+		int numberOfEdges = 20;
 		int increaseStorageCounter = numberOfEdges * 4;
-		int maxValue = 5;
-		int maxWeight = 50;		
+		int maxValue = 10;
+		int maxWeight = 10;		
 		int first, second, weight, graphSize,
 		randomToConnectIndex1, randomToConnectIndex2,
 		randomToConnectValue1 = 0, randomToConnectValue2 = 0;
