@@ -22,13 +22,19 @@ public class GraphRunner {
 	}
 
 	private static void loadGraph() {	
-//		try {
+		try {
+			// breadth testing
+//			graph.addEdge(1, 4, 1, false);
+//			graph.addEdge(1, 3, 1, false);
+//			graph.addEdge(4, 2, 1, false);
+			
+			// depth testing
 //			graph.addEdge(1, 2, 1, false);
 //			graph.addEdge(1, 3, 1, false);
 //			graph.addEdge(3, 5, 1, false);
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int numberOfEdges = 10;
 		int increaseStorageCounter = numberOfEdges * 2;
 		int maxValue = 10;
