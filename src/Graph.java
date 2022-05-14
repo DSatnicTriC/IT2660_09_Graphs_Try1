@@ -18,7 +18,7 @@ public class Graph {
 		}
 		
 		var existingConnections = this.storage.get(first);
-		if (existingConnections != null) {
+		if (existingConnections != null && existingConnections.size() > 0) {
 			for (GraphEdge w : existingConnections) {
 				if (w.getConnectedTo() == second) {
 					throw new Exception("connection already exists");
@@ -42,6 +42,19 @@ public class Graph {
 
 		this.storage.get(first).add(graphEdge);
 		if (bidirectional == true) {
+			existingConnections = this.storage.get(second);
+			if (existingConnections != null && existingConnections.size() > 0) {
+				for (GraphEdge w : existingConnections) {
+					if (w.getConnectedTo() == first) {
+						throw new Exception("connection already exists");
+					}
+				}
+				
+				if (existingConnections.size() > 5) {
+					throw new Exception("no more than 5 connections");
+				}
+			}
+			
 			graphEdge = new GraphEdge();
 			graphEdge.setWeight(weight);
 			graphEdge.setConnectedTo(first);
