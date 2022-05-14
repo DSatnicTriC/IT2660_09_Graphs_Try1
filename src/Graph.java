@@ -267,8 +267,6 @@ public class Graph {
 	}
 		
 	public void dijkstraSearchSearch(int start, int end) {
-		var successMessage = "Success: ";
-		var shortestLength = "The length of the shortest path to the found node: ";
-		var numberOfNodes = "The total number of nodes examined during the search: ";
+		System.out.println("I set up the graph weights but I do not have time to implement this one");
 	}
 }

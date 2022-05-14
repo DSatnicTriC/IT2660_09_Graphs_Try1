@@ -165,5 +165,6 @@ public class GraphRunner {
 		int first = graph.getFirstVertex();
 		int second = graph.getSecondVertex();
 		System.out.println("Calculating Dijkstra's Algorithm between: " + first + " and " + second);
+		graph.dijkstraSearchSearch(first, second);
 	}
 }
