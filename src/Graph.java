@@ -131,6 +131,8 @@ public class Graph {
 	public void depthFirstSearch(int start, int end) {
 		var toVisit = new Stack<Integer>();
 		var visited = new LinkedList<Integer>();
+		int counterOfTotalNodes = 0;
+		boolean success = false;
 		
 		toVisit.push(start);
 		int visitingFromStack, visitingFromChildren;
@@ -142,7 +144,9 @@ public class Graph {
 				continue;
 			}
 			visited.add(visitingFromStack);
+			counterOfTotalNodes++;
 			if (visitingFromStack == end) {
+				success = true;
 				break;
 			}
 			
@@ -151,32 +155,36 @@ public class Graph {
 				for (GraphEdge w : descendents) {
 					visitingFromChildren = w.getConnectedTo();
 					visited.add(visitingFromChildren);
+					counterOfTotalNodes++;
 					
 					if (visitingFromChildren == end) {
+						success = true;
 						break;
 					}
 					
 					var childDescendents = this.storage.get(visitingFromChildren);
 					for (GraphEdge y : childDescendents) {
 						toVisit.push(y.getConnectedTo());
+						counterOfTotalNodes++;
 					}
 				}
 			}			
 		}
 		
+		var shortestLength = "The length of the shortest path to the found node: " + visited.size();
 		var path = "Path: " + visited.toString();
-		System.out.println(path);
+		var numberOfNodes = "The total number of nodes examined during the search: " + counterOfTotalNodes;
 		
-//		var successMessage = "Success: ";
-//		var shortestLength = "The length of the shortest path to the found node: ";
-//		var path = "Path: " + visited.toString();
-//		var numberOfNodes = "The total number of nodes examined during the search: ";
+		System.out.println(numberOfNodes);
+		if (success) {
+			System.out.println(shortestLength);
+			System.out.println(path);
+		}
+		else {
+			System.out.println("Node not found or not linked");
+		}
 	}
-	
-	private void depthFirstVisit() {
 		
-	}
-	
 	public void dijkstraSearchSearch(int start, int end) {
 		var successMessage = "Success: ";
 		var shortestLength = "The length of the shortest path to the found node: ";
