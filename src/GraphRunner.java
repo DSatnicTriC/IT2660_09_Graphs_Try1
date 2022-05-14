@@ -5,25 +5,15 @@ public class GraphRunner {
 
 	static Scanner input = new Scanner(System.in);
 	static Graph graph = new Graph();
+	static Integer menuEntry = 1;
 
 	public static void main(String[] args) {
-		Integer menuEntry;
-
 		loadGraph();
 
 		System.out.println("Graph has been loaded!");
-
-		displayMenu();
 		do {
-			menuEntry = parseUserInput();
-			
-			if (menuEntry == 1) {
-				displayBasicGraphInfo();
-			}
-			else if (menuEntry == 2) {
-				displayFullGraph();
-			}
-		} while (menuEntry == null);
+			InteractWithUser();
+		} while (menuEntry != 0);
 
 		input.close();
 	}
@@ -70,18 +60,33 @@ public class GraphRunner {
 		System.out.println("3) Breadth-First Search");
 		System.out.println("4) Depth-First Search");
 		System.out.println("5) Dijkstra's Algorithm Search");
+		System.out.println("0) Exit");
+	}
+	
+	private static void InteractWithUser() {
+		displayMenu();
+		do {
+			menuEntry = parseUserInput();
+		} while (menuEntry == null);
+		
+		if (menuEntry == 1) {
+			displayBasicGraphInfo();
+		}
+		else if (menuEntry == 2) {
+			displayFullGraph();
+		}
 	}
 
 	private static Integer parseUserInput() {
 
 		System.out.print("Please select an option: ");
+		System.out.printf("...\n");
 		int menuEntry = input.nextInt();
 
-		if (menuEntry < 1 || menuEntry > 5) {
+		if (menuEntry < 0 || menuEntry > 5) {
 			System.out.println("Invalid selection");
 			return null;
 		}
 		return menuEntry;
 	}
-
 }
