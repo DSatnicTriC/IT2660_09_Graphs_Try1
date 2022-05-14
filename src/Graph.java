@@ -49,21 +49,20 @@ public class Graph {
 			System.out.println("No, this is not a vertex: " + vertex);
 		}
 	}
-	
+
 	// print the graph
-    @Override
-    public String toString()
-    {
-        StringBuilder builder = new StringBuilder();
- 
-        for (Integer item : this.storage.keySet()) {
-            builder.append(item.toString() + ": ");
-            for (GraphEdge w : this.storage.get(item)) {
-                builder.append(w.getConnectedTo() + "(" + w.getWeight() + ")"  + " ");
-            }
-            builder.append("\n");
-        }
- 
-        return (builder.toString());
-    }
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+
+		for (Integer item : this.storage.keySet()) {
+			builder.append(item.toString() + ": ");
+			for (GraphEdge w : this.storage.get(item)) {
+				builder.append(w.getConnectedTo() + "(" + w.getWeight() + ")" + " ");
+			}
+			builder.append("\n");
+		}
+
+		return (builder.toString());
+	}
 }

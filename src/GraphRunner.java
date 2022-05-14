@@ -3,18 +3,28 @@ import java.util.Scanner;
 public class GraphRunner {
 	
 	static Scanner input = new Scanner(System.in);
-
+	static Graph graph = new Graph();
+	
 	public static void main(String[] args) {
 		Integer menuEntry;
-
+		
+		loadGraph();
+		
 		System.out.println("Graph has been loaded!");
+		
+		System.out.println(graph.toString());
 
-		displayMenu();
-		do {
-			menuEntry = parseUserInput();
-		} while (menuEntry == null);
+//		displayMenu();
+//		do {
+//			menuEntry = parseUserInput();
+//		} while (menuEntry == null);
 
 		input.close();
+	}
+	
+	private static void loadGraph() {
+		graph.addEdge(1, 5, 30, false);
+		graph.addEdge(6, 4, 2, true);
 	}
 
 	private static void displayBasicGraphInfo() {
