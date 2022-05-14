@@ -13,12 +13,17 @@ public class GraphRunner {
 
 		System.out.println("Graph has been loaded!");
 
-		System.out.println(graph.toString());
-
-//		displayMenu();
-//		do {
-//			menuEntry = parseUserInput();
-//		} while (menuEntry == null);
+		displayMenu();
+		do {
+			menuEntry = parseUserInput();
+			
+			if (menuEntry == 1) {
+				displayBasicGraphInfo();
+			}
+			else if (menuEntry == 2) {
+				displayFullGraph();
+			}
+		} while (menuEntry == null);
 
 		input.close();
 	}
@@ -48,13 +53,14 @@ public class GraphRunner {
 
 	private static void displayBasicGraphInfo() {
 		System.out.println("**********************");
-		System.out.println("X vertices");
-		System.out.println("Y edges");
+		System.out.println("Vertices: " + graph.getNumberOfVertices());
+		System.out.println("Y edges: " + +graph.getNumberOfVertices());
 		System.out.println("**********************");
 	}
 
 	private static void displayFullGraph() {
 		System.out.println("Full Graph");
+		System.out.println(graph.toString());
 	}
 
 	private static void displayMenu() {

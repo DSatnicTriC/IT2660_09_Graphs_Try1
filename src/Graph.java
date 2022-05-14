@@ -32,19 +32,18 @@ public class Graph {
 		}
 	}
 
-	public void getNumberOfVertices() {
-		System.out.println("Number of vertices: " + this.storage.keySet().size());
+	public int getNumberOfVertices() {
+		return this.storage.keySet().size();
 	}
 
 	// counting a directional edge as two edges - might not always be
 	// terminologically correct
-	public void getNumberOfEdges() {
+	public int getNumberOfEdges() {
 		int count = 0;
 		for (int item : this.storage.keySet()) {
 			count += this.storage.get(item).size();
 		}
-
-		System.out.println("Number of edges: " + count);
+		return count;
 	}
 
 	public void hasVertex(int vertex) {
