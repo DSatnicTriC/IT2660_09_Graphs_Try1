@@ -137,7 +137,7 @@ public class Graph {
 		toVisit.push(start);
 		int visitingFromStack, visitingFromChildren;
 		
-		while (!toVisit.isEmpty()) {
+		while (!toVisit.isEmpty() && success == false) {
 			visitingFromStack = toVisit.pop();
 			
 			if (visited.contains(visitingFromStack)) {
