@@ -2,6 +2,10 @@ import java.util.*;
 
 public class Graph {
 	private Map<Integer, List<GraphEdge>> storage = new HashMap<>();
+	
+	public Map<Integer, List<GraphEdge>> getStorage() {
+		return storage;
+	}
 
 	public void addVertex(int value) {
 		this.storage.put(value, new LinkedList<GraphEdge>());

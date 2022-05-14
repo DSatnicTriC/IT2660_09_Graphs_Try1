@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class GraphRunner {
@@ -19,10 +22,13 @@ public class GraphRunner {
 	}
 
 	private static void loadGraph() {
-		int numberOfEdges = 2;
+		int numberOfEdges = 4;
+		int increaseStorageCounter = numberOfEdges + 2;
 		int maxValue = 5;
-		int maxWeight = 50;
-		int first, second, weight;
+		int maxWeight = 50;		
+		int first, second, weight, graphSize,
+		randomToConnectIndex1, randomToConnectIndex2,
+		randomToConnectValue1 = 0, randomToConnectValue2 = 0;
 		boolean bidirectional;
 
 		Random rand = new Random();
@@ -39,6 +45,37 @@ public class GraphRunner {
 				i--;
 			}
 		}
+		
+		var storage = graph.getStorage();
+		graphSize = storage.size();
+		for (int i = 0; i < increaseStorageCounter; i++) {
+			randomToConnectIndex1 = rand.nextInt(graphSize);
+			randomToConnectIndex2 = rand.nextInt(graphSize);
+			weight = rand.nextInt(maxWeight) + 1;
+			bidirectional = rand.nextInt(2) == 0 ? false : true;
+			int counter = 0;
+			for (Map.Entry<Integer, List<GraphEdge>> w : storage.entrySet()) {
+				if (counter == randomToConnectIndex1) {
+					randomToConnectValue1 = w.getKey();
+					break;
+				}
+				counter++;
+			}
+			for (Map.Entry<Integer, List<GraphEdge>> w : storage.entrySet()) {
+				if (counter == randomToConnectIndex2) {
+					randomToConnectValue2 = w.getKey();
+					break;
+				}
+				counter++;
+			}
+			
+			try {
+				graph.addEdge(randomToConnectValue1, randomToConnectValue2, weight, bidirectional);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		
 	}
 
 	private static void displayBasicGraphInfo() {
