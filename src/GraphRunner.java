@@ -42,10 +42,8 @@ public class GraphRunner {
 	}
 
 	private static void displayBasicGraphInfo() {
-		System.out.println("**********************");
 		System.out.println("Vertices: " + graph.getNumberOfVertices());
 		System.out.println("Y edges: " + +graph.getNumberOfVertices());
-		System.out.println("**********************");
 	}
 
 	private static void displayFullGraph() {
@@ -54,6 +52,7 @@ public class GraphRunner {
 	}
 
 	private static void displayMenu() {
+		System.out.println("**********************");
 		System.out.println("What would you like to do?");
 		System.out.println("1) Display Basic Graph Info");
 		System.out.println("2) Display Full Graph");
@@ -75,6 +74,15 @@ public class GraphRunner {
 		else if (menuEntry == 2) {
 			displayFullGraph();
 		}
+		else if (menuEntry == 3) {
+			breadthFirstSearch();
+		}
+		else if (menuEntry == 4) {
+			depthFirstSearch();
+		}
+		else if (menuEntry == 5) {
+			dijkstraSearch();
+		}
 	}
 
 	private static Integer parseUserInput() {
@@ -88,5 +96,23 @@ public class GraphRunner {
 			return null;
 		}
 		return menuEntry;
+	}
+	
+	private static void breadthFirstSearch() {
+		int first = graph.getFirstVertex();
+		int second = graph.getSecondVertex();
+		System.out.println("Calculating Breadth-First between: " + first + " and " + second);
+	}
+	
+	private static void depthFirstSearch() {
+		int first = graph.getFirstVertex();
+		int second = graph.getSecondVertex();
+		System.out.println("Calculating Depth-First between: " + first + " and " + second);
+	}
+	
+	private static void dijkstraSearch() {
+		int first = graph.getFirstVertex();
+		int second = graph.getSecondVertex();
+		System.out.println("Calculating Dijkstra's Algorithm between: " + first + " and " + second);
 	}
 }

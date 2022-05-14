@@ -69,4 +69,26 @@ public class Graph {
 
 		return (builder.toString());
 	}
+	
+	public int getFirstVertex() {
+		int counter = 0;
+		for (Integer item : this.storage.keySet()) {
+			if (counter == 0) {
+				return item;
+			}
+			counter++;
+		}
+		return 0;
+	}
+	
+	public int getSecondVertex() {
+		int counter = 0;
+		for (Integer item : this.storage.keySet()) {
+			if (counter == 1) {
+				return item;
+			}
+			counter++;
+		}
+		return 0;
+	}
 }
