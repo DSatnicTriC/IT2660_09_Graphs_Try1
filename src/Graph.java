@@ -91,4 +91,22 @@ public class Graph {
 		}
 		return 0;
 	}
+	
+	public void breadthFirstSearch(int start, int end) {
+		var successMessage = "Success: ";
+		var shortestLength = "The length of the shortest path to the found node: ";
+		var numberOfNodes = "The total number of nodes examined during the search: ";
+	}
+	
+	public void depthFirstSearch(int start, int end) {
+		var successMessage = "Success: ";
+		var shortestLength = "The length of the shortest path to the found node: ";
+		var numberOfNodes = "The total number of nodes examined during the search: ";
+	}
+	
+	public void dijkstraSearchSearch(int start, int end) {
+		var successMessage = "Success: ";
+		var shortestLength = "The length of the shortest path to the found node: ";
+		var numberOfNodes = "The total number of nodes examined during the search: ";
+	}
 }
