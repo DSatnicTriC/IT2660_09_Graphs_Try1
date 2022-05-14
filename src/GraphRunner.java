@@ -71,7 +71,7 @@ public class GraphRunner {
 			}
 			
 			try {
-				graph.addEdge(randomToConnectValue1, randomToConnectValue2, weight, bidirectional);
+				graph.addEdge(randomToConnectValue1, randomToConnectValue2, weight, false);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
