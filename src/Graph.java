@@ -41,14 +41,29 @@ public class Graph {
 
 		System.out.println("Number of edges: " + count);
 	}
+
+	public void hasVertex(int vertex) {
+		if (this.storage.containsKey(vertex)) {
+			System.out.println("Yes, this is a vertex: " + vertex);
+		} else {
+			System.out.println("No, this is not a vertex: " + vertex);
+		}
+	}
 	
-	public void hasVertex(int vertex)
+	// print the graph
+    @Override
+    public String toString()
     {
-        if (this.storage.containsKey(vertex)) {
-            System.out.println("Yes, this is a vertex: " + vertex);
+        StringBuilder builder = new StringBuilder();
+ 
+        for (Integer item : this.storage.keySet()) {
+            builder.append(item.toString() + ": ");
+            for (GraphEdge w : this.storage.get(item)) {
+                builder.append(w.getConnectedTo() + "(" + w.getWeight() + ")"  + " ");
+            }
+            builder.append("\n");
         }
-        else {
-        	System.out.println("No, this is not a vertex: " + vertex);
-        }
-    }	
+ 
+        return (builder.toString());
+    }
 }
