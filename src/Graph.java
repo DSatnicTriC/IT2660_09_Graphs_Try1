@@ -22,6 +22,8 @@ public class Graph {
 
 		this.storage.get(first).add(graphEdge);
 		if (bidirectional == true) {
+			graphEdge = new GraphEdge();
+			graphEdge.setWeight(weight);
 			graphEdge.setConnectedTo(first);
 			this.storage.get(second).add(graphEdge);
 		}
