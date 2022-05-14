@@ -23,7 +23,7 @@ public class GraphRunner {
 
 	private static void loadGraph() {
 		int numberOfEdges = 4;
-		int increaseStorageCounter = numberOfEdges + 2;
+		int increaseStorageCounter = numberOfEdges * 4;
 		int maxValue = 5;
 		int maxWeight = 50;		
 		int first, second, weight, graphSize,
@@ -49,11 +49,11 @@ public class GraphRunner {
 		var storage = graph.getStorage();
 		graphSize = storage.size();
 		for (int i = 0; i < increaseStorageCounter; i++) {
-			randomToConnectIndex1 = rand.nextInt(graphSize);
-			randomToConnectIndex2 = rand.nextInt(graphSize);
+			randomToConnectIndex1 = rand.nextInt(graphSize) + 1;
+			randomToConnectIndex2 = rand.nextInt(graphSize) + 1;
 			weight = rand.nextInt(maxWeight) + 1;
 			bidirectional = rand.nextInt(2) == 0 ? false : true;
-			int counter = 0;
+			int counter = 1;
 			for (Map.Entry<Integer, List<GraphEdge>> w : storage.entrySet()) {
 				if (counter == randomToConnectIndex1) {
 					randomToConnectValue1 = w.getKey();
@@ -61,6 +61,7 @@ public class GraphRunner {
 				}
 				counter++;
 			}
+			counter = 1;
 			for (Map.Entry<Integer, List<GraphEdge>> w : storage.entrySet()) {
 				if (counter == randomToConnectIndex2) {
 					randomToConnectValue2 = w.getKey();
@@ -75,7 +76,6 @@ public class GraphRunner {
 				// TODO: handle exception
 			}
 		}
-		
 	}
 
 	private static void displayBasicGraphInfo() {
