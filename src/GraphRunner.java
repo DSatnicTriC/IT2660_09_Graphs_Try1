@@ -108,6 +108,7 @@ public class GraphRunner {
 		int first = graph.getFirstVertex();
 		int second = graph.getSecondVertex();
 		System.out.println("Calculating Depth-First between: " + first + " and " + second);
+		graph.depthFirstSearch(first, second);
 	}
 	
 	private static void dijkstraSearch() {

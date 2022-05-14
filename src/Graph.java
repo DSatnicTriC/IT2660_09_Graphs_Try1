@@ -112,9 +112,43 @@ public class Graph {
 	}
 	
 	public void depthFirstSearch(int start, int end) {
-		var successMessage = "Success: ";
-		var shortestLength = "The length of the shortest path to the found node: ";
-		var numberOfNodes = "The total number of nodes examined during the search: ";
+		var toVisit = new Stack<Integer>();
+		var visited = new LinkedList<Integer>();
+		
+		toVisit.push(start);
+		int visitingFromStack, visitingFromChildren;
+		
+		while (!toVisit.isEmpty()) {
+			visitingFromStack = toVisit.pop();
+			
+			visited.add(visitingFromStack);
+			if (visitingFromStack == end) {
+				break;
+			}
+			
+			var descendents = this.storage.get(visitingFromStack);
+			if (descendents != null) {
+				for (GraphEdge w : descendents) {
+					visitingFromChildren = w.getConnectedTo();
+					visited.add(visitingFromChildren);
+					if (visitingFromChildren == end) {
+						break;
+					}
+				}
+			}			
+		}
+		
+		var path = "Path: " + visited.toString();
+		System.out.println(path);
+		
+//		var successMessage = "Success: ";
+//		var shortestLength = "The length of the shortest path to the found node: ";
+//		var path = "Path: " + visited.toString();
+//		var numberOfNodes = "The total number of nodes examined during the search: ";
+	}
+	
+	private void depthFirstVisit() {
+		
 	}
 	
 	public void dijkstraSearchSearch(int start, int end) {
