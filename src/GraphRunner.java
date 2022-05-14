@@ -25,7 +25,7 @@ public class GraphRunner {
 
 	private static void loadGraph() {
 		int numberOfEdges = 2;
-		int maxValue = 100000;
+		int maxValue = 5;
 		int maxWeight = 50;
 		int first, second, weight;
 		boolean bidirectional;
