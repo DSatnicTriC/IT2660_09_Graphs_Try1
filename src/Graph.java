@@ -2,11 +2,10 @@ import java.util.*;
 
 public class Graph {
 	private Map<Integer, List<GraphEdge>> storage = new HashMap<>();
-	
-	public void addVertex(int value)
-    {
+
+	public void addVertex(int value) {
 		this.storage.put(value, new LinkedList<GraphEdge>());
-    }
+	}
 
 	// keeping bidirectional weights the same
 	public void addEdge(int first, int second, int weight, boolean bidirectional) {
@@ -27,4 +26,29 @@ public class Graph {
 			this.storage.get(second).add(graphEdge);
 		}
 	}
+
+	public void getNumberOfVertices() {
+		System.out.println("Number of vertices: " + this.storage.keySet().size());
+	}
+
+	// counting a directional edge as two edges - might not always be
+	// terminologically correct
+	public void getNumberOfEdges() {
+		int count = 0;
+		for (int item : this.storage.keySet()) {
+			count += this.storage.get(item).size();
+		}
+
+		System.out.println("Number of edges: " + count);
+	}
+	
+	public void hasVertex(int vertex)
+    {
+        if (this.storage.containsKey(vertex)) {
+            System.out.println("Yes, this is a vertex: " + vertex);
+        }
+        else {
+        	System.out.println("No, this is not a vertex: " + vertex);
+        }
+    }	
 }
