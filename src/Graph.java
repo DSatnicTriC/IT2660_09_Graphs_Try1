@@ -146,20 +146,25 @@ public class Graph {
 			
 			var descendents = this.storage.get(visitingFromQueue);
 			if (descendents != null) {
+				int childCounter = 0;
 				for (GraphEdge w : descendents) {
 					visitingFromChildren = w.getConnectedTo();
-					toVisit.add(visitingFromChildren);
-					counterOfTotalNodes++;
-										
-					var childDescendents = this.storage.get(visitingFromChildren);
-					for (GraphEdge y : childDescendents) {
-						visited.add(y.getConnectedTo());
-						counterOfTotalNodes++;
-						
-						if (y.getConnectedTo() == end) {
-							success = true;
-							break;
+					
+					if (childCounter == 0) {
+						var childDescendents = this.storage.get(visitingFromChildren);
+						for (GraphEdge y : childDescendents) {
+							visited.add(y.getConnectedTo());
+							counterOfTotalNodes++;
+							
+							if (y.getConnectedTo() == end) {
+								success = true;
+								break;
+							}
 						}
+					}
+					else {
+						counterOfTotalNodes++;
+						toVisit.add(visitingFromChildren);
 					}
 				}
 			}			
